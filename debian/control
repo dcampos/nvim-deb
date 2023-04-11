@@ -2,7 +2,11 @@ Source: neovim
 Section: editors
 Priority: optional
 Maintainer: dpc <dpc@localhost>
-Build-Depends: debhelper-compat (>= 13)
+Build-Depends:
+    autoconf,
+    automake,
+    cmake,
+    debhelper (>= 11)
 
 Package: neovim
 Provides:
@@ -10,6 +14,6 @@ Provides:
  vim,
 Conflicts:
  neovim-runtime
-Architecture: amd64
+Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: Fork of Vim aiming to improve user experience, plugins, and GUIs.
+Description: Vim out of the box.
