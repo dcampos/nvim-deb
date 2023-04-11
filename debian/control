@@ -1,0 +1,15 @@
+Source: neovim
+Section: editors
+Priority: optional
+Maintainer: dpc <dpc@localhost>
+Build-Depends: debhelper-compat (>= 13)
+
+Package: neovim
+Provides:
+ editor,
+ vim,
+Conflicts:
+ neovim-runtime
+Architecture: amd64
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Fork of Vim aiming to improve user experience, plugins, and GUIs.
