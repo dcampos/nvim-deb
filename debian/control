@@ -10,10 +10,12 @@ Build-Depends:
 
 Package: neovim
 Provides:
- editor,
- vim,
+    editor,
+    vim
 Conflicts:
- neovim-runtime
+   neovim-runtime
+Replaces:
+   neovim-runtime
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Vim out of the box.
