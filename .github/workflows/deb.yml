@@ -14,39 +14,18 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y devscripts equivs
+          sudo apt-get install -y devscripts equivs \
+            build-essential fakeroot
 
-      - name: Set env
-        run: |
-          PKGVERSION=$(dpkg-parsechangelog --show-field=Version)
-          echo "PKGVERSION=${PKGVERSION}" >> $GITHUB_ENV
-          echo "VERSION=${PKGVERSION/-*}" >> $GITHUB_ENV
-          echo "RELEASE=${PKGVERSION/*-}" >> $GITHUB_ENV
-          echo "SOURCE=$(dpkg-parsechangelog --show-field=Source)" >> $GITHUB_ENV
-          echo "TAG_MSG=$(git tag -l --format='%(contents:subject)' v${PKGVERSION})" >> $GITHUB_ENV
-
-      - name: Check out source
-        uses: actions/checkout@v3
-        with:
-          repository: neovim/neovim
-          ref: 'v${{ env.VERSION }}'
-          fetch-depth: 1
-          path: build-dir
-
-      - name: Make deb
-        run: |
-          echo "$(git log --format=%B -n 1)" >> ../release-notes.txt
-          cp -a ../debian ../local.mk .
-          mk-build-deps --install --root-cmd sudo --remove
-          dpkg-buildpackage -us -uc
-        working-directory: build-dir
+      - name: Build
+        run: 
+          ./build.sh
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            *.deb
-            *.tar.xz
-            release-notes.txt
-          name: "${{ env.TAG_MSG }}"
-          tag_name: "v${{ env.PKGVERSION }}"
+            build/*.deb
+            build/*.tar.xz
+            build/*.dsc
+          tag_name: "${{github.ref_name}}"

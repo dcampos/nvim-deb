@@ -1,0 +1,3 @@
+build/usr/bin/* usr/bin/
+build/usr/lib/* usr/lib/
+build/usr/share/* usr/share/
