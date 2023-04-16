@@ -3,10 +3,19 @@ Section: editors
 Priority: optional
 Maintainer: dpc <dpc@localhost>
 Build-Depends:
-    autoconf,
-    automake,
-    cmake,
-    debhelper (>= 11)
+     ninja-build,
+     gettext,
+     libtool,
+     libtool-bin,
+     autoconf,
+     automake,
+     cmake,
+     g++,
+     pkg-config,
+     unzip,
+     curl,
+     doxygen,
+Rules-Requires-Root: no
 
 Package: neovim
 Provides:
