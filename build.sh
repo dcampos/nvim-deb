@@ -25,6 +25,7 @@ tar xf "${NAME}"_"${VERSION}".orig.tar.gz
 cd "${NAME}-${VERSION}"
 
 cp -R ../../debian .
+cp -R ../../local.mk .
 
 sudo mk-build-deps --install --remove \
     --tool="apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes" \
