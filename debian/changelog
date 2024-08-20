@@ -1,6 +1,5 @@
-neovim (0.10.1-0) unstable; urgency=medium
+neovim (0.10.1-1) unstable; urgency=medium
 
   * Changes not tracked
 
- -- dcampos <dcampos@users.noreply.github.com>  Tue, 20 Aug 2024 19:26:49 -0300
-
+ -- dcampos <dcampos@users.noreply.github.com>  Tue, 20 Aug 2024 20:19:07 -0300
